@@ -1,12 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
-import styled from 'styled-components';
-
-export const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-`;
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 html {
@@ -17,8 +9,6 @@ body {
   font-style: normal;
   font-size: 16px;
   letter-spacing: 0.03em;
-  background-color: #f7f7f7;
-  color: #545454;
 }
 h1,
 h2,

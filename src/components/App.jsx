@@ -1,13 +1,13 @@
-import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
 import { GlobalStyle } from "./GlobalStyles";
+import MainField from "./MainField/MainField";
 
 export const App = () => {
   return (
     <>
-      <Toaster />
       <Suspense fallback="aaaa" />
       <GlobalStyle />
+      <MainField />
     </>
   );
 };
