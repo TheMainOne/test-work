@@ -1,9 +1,25 @@
 {
-  "posts": [
+  "persons": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "Lola Atkinson",
+      "email": "ola_atkinson@sloganaut.travel",
+      "department": "A1",
+      "BirthDate": "1988-12-13"
+    },
+    {
+      "id": 2,
+      "name": "Sharp Savage",
+      "email": "adasda@mail.com",
+      "department": "A1",
+      "BirthDate": "1988-07-20"
+    },
+    {
+      "id": 3,
+      "name": "Candis Harris",
+      "email": "wre4345@mail.com",
+      "department": "B2",
+      "BirthDate": "1990-10-30"
     }
   ],
   "comments": [
