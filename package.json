@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-08-phonebook",
+  "name": "test-work",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://TheMainOne.github.io/goit-react-hw-08-phonebook-/",
+  "homepage": "https://github.com/TheMainOne/test-work",
   "dependencies": {
     "axios": "^0.26.1",
     "prop-types": "^15.8.1",
