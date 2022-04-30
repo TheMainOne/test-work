@@ -11,3 +11,8 @@ async function fetchPersons(url = "") {
 export function fetchAllPersons() {
   return fetchPersons(`persons`);
 }
+
+export async function addPerson(url = "", person) {
+  const response = await axios.post(url, person);
+  return response;
+}

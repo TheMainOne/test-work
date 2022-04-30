@@ -6,52 +6,62 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { AddButton } from "components/AddButton/AddButton";
-import { fetchAllPersons } from "services/fetchPersons";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { LoadingNotification } from "./PersonList.styled";
 
-fetchAllPersons().then((data) => console.log(data));
-
-function createData(name, calories, fat, carbs) {
-  return { name, calories, fat, carbs };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 60, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-];
-
-export default function PersonList() {
+export default function PersonList({ persons }) {
   return (
     <>
       <AddButton />
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Birth date</TableCell>
-              <TableCell>Department</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.calories}</TableCell>
-                <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
+      {persons ? (
+        <TableContainer>
+          <Table>
+            <TableHead sx={{ backgroundColor: "#b1adad" }}>
+              <TableRow>
+                <TableCell sx={{ fontWeight: "bold" }}>Name</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Email</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Birth date</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>Department</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              {persons &&
+                persons.map((person) => (
+                  <TableRow
+                    key={person.id}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {person.name}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {person.email}
+                    </TableCell>
+                    <TableCell component="th" scope="row">
+                      {person.BirthDate}
+                    </TableCell>
+                    <TableCell
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                      component="th"
+                      scope="row"
+                    >
+                      {person.department}
+                      <MoreVertIcon />
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <LoadingNotification>Loading data...</LoadingNotification>
+      )}
     </>
   );
 }

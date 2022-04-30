@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const TableHead = styled.table`
-  width: 100%;
+export const LoadingNotification = styled.p`
+  text-align: center;
 `;
