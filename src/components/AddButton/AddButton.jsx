@@ -44,7 +44,7 @@ export const AddButton = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: 840,
-            height: 540,
+            height: 510,
             bgcolor: "#e9e9e9",
           }}
         >
@@ -65,7 +65,7 @@ export const AddButton = () => {
             >
               Transactional modal title
             </Typography>
-            <CloseIcon fontSize="small" />
+            <CloseIcon fontSize="small" onClick={handleClose} />
           </Box>
           <ContactForm />
         </Box>
