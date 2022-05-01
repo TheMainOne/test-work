@@ -8,7 +8,7 @@ export const Form = styled.form`
 
 export const CancelButton = styled.button`
   width: 420px;
-  height: 82px;
+  height: 83px;
   text-align: left;
   border: none;
   background-color: #2c2a2a;
@@ -18,7 +18,7 @@ export const CancelButton = styled.button`
 
 export const SubmitButton = styled.button`
   width: 420px;
-  height: 82px;
+  height: 83px;
   text-align: left;
   border: none;
   background-color: blue;
