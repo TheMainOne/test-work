@@ -7,6 +7,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { DeletePersonModal } from "modals/DeletePersonModal";
 import { ViewPersonModal } from "modals/ViewPersonModal";
+import { EditPersonModal } from "modals/EditPersonModal";
 
 export const DporMenu = ({ id, name, fetchingNewContact }) => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -16,6 +17,9 @@ export const DporMenu = ({ id, name, fetchingNewContact }) => {
   const [openViewModal, setOpenViewModal] = useState(false);
   const handleOpenViewModal = () => setOpenViewModal(true);
   const handleCloseViewModal = () => setOpenViewModal(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const handleOpenEditModal = () => setOpenEditModal(true);
+  const handleCloseEditModal = () => setOpenEditModal(false);
 
   const handleOpenUserMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -56,7 +60,9 @@ export const DporMenu = ({ id, name, fetchingNewContact }) => {
             </Typography>
           </MenuItem>
           <MenuItem>
-            <Typography textAlign="left">Edit</Typography>
+            <Typography textAlign="left" onClick={handleOpenEditModal}>
+              Edit
+            </Typography>
           </MenuItem>
           <MenuItem>
             <Typography textAlign="left" onClick={handleOpen}>
@@ -76,6 +82,12 @@ export const DporMenu = ({ id, name, fetchingNewContact }) => {
         openViewModal={openViewModal}
         handleCloseViewModal={handleCloseViewModal}
         id={id}
+      />
+      <EditPersonModal
+        openEditModal={openEditModal}
+        handleCloseEditModal={handleCloseEditModal}
+        id={id}
+        fetchingNewContact={fetchingNewContact}
       />
     </>
   );

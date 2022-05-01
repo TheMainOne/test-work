@@ -41,7 +41,7 @@ export const ContactForm = ({ handleClose, persons, fetchingNewContact }) => {
     };
 
     addPerson("persons", newContact).then(() => fetchingNewContact(true));
-    toast.success(`${name} has succesfully added`);
+    toast.success(`${name} has successfully added`);
     form.reset();
     handleClose();
   };

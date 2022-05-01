@@ -21,6 +21,11 @@ export async function addPerson(url = "", person) {
   return response;
 }
 
+export async function changePersonData(url = "", newData) {
+  const response = await axios.put(url, newData);
+  return response;
+}
+
 export async function deletePerson(url = "") {
   const response = await axios.delete(url);
   return response;

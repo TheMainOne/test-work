@@ -89,7 +89,7 @@ export const DeletePersonModal = ({
           onClick={() => {
             deletePerson(`persons/${id}`).then(() => {
               fetchingNewContact(true);
-              toast.success(`${name} has succesfully removed`);
+              toast.success(`${name} has successfully removed`);
             });
           }}
         >
