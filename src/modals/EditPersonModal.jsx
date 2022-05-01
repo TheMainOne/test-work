@@ -60,8 +60,6 @@ export const EditPersonModal = ({
       BirthDate: date,
     };
 
-    console.log(newPersonData);
-
     if (!validator.isEmail(email)) {
       toast.error(`${email} is incorrect email`);
       return;

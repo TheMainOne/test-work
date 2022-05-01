@@ -20,13 +20,6 @@
       "email": "wre4345@mail.com",
       "department": "B2",
       "BirthDate": "1990-10-03"
-    },
-    {
-      "name": "Maksym Lvov",
-      "email": "mail@mail.com",
-      "department": "C3",
-      "BirthDate": "1993-02-08",
-      "id": 4
     }
   ]
 }
