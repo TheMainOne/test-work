@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/TheMainOne/test-work/static/js/main.72af603c.js",
+    "main.js": "/TheMainOne/test-work/static/js/main.df868d3f.js",
     "index.html": "/TheMainOne/test-work/index.html",
-    "main.72af603c.js.map": "/TheMainOne/test-work/static/js/main.72af603c.js.map"
+    "main.df868d3f.js.map": "/TheMainOne/test-work/static/js/main.df868d3f.js.map"
   },
   "entrypoints": [
-    "static/js/main.72af603c.js"
+    "static/js/main.df868d3f.js"
   ]
 }
