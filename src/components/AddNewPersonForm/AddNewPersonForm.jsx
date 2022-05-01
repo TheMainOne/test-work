@@ -1,19 +1,54 @@
+import { useState } from "react";
+import validator from "validator";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
-import { Form } from "./AddNewPersonForm.styled";
 import InputLabel from "@mui/material/InputLabel";
+import toast from "react-hot-toast";
+import { addPerson } from "services/fetchPersons";
+import { Form, CancelButton, SubmitButton } from "./AddNewPersonForm.styled";
 
-export const ContactForm = () => {
+export const ContactForm = ({ handleClose, persons, fetchingNewContact }) => {
+  const [value, setValue] = useState("");
   const departments = ["A1", "B2", "C3"];
 
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  const onSubmitForm = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.elements.name.value;
+    const email = form.elements.email.value;
+    const dateOfBirth = form.elements.date.value;
+    const department = form.elements.department.value;
+    const isNameInPersons = persons.find((person) => person.name === name);
+
+    if (isNameInPersons) {
+      toast.error(`${name} has been added already`);
+      form.reset();
+      return;
+    } else if (!validator.isEmail(email)) {
+      toast.error(`${email} is incorrect email`);
+      form.reset();
+      return;
+    }
+
+    const newContact = {
+      name: name,
+      email: email,
+      department: department,
+      BirthDate: dateOfBirth,
+    };
+
+    addPerson("persons", newContact).then(() => fetchingNewContact(true));
+    toast.success(`${name} has succesfully added`);
+    form.reset();
+    handleClose();
+  };
+
   return (
-    <Form
-      onSubmit={(event) => {
-        event.preventDefault();
-        const form = event.target;
-        console.log(form);
-      }}
-    >
+    <Form onSubmit={onSubmitForm}>
       <InputLabel
         sx={{
           marginTop: "20px",
@@ -93,6 +128,8 @@ export const ContactForm = () => {
           type="text"
           name="department"
           size="small"
+          value={value}
+          onChange={handleChange}
           select
           title="Please choose your department"
           required
@@ -110,8 +147,10 @@ export const ContactForm = () => {
         </TextField>
       </InputLabel>
       <div>
-        <button type="button">Cancel</button>
-        <button type="submit">Save</button>
+        <CancelButton type="button" onClick={handleClose}>
+          Cancel
+        </CancelButton>
+        <SubmitButton type="submit">Save</SubmitButton>
       </div>
     </Form>
   );

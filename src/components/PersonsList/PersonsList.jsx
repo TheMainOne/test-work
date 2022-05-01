@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,13 +5,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { AddButton } from "components/AddButton/AddButton";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { LoadingNotification } from "./PersonList.styled";
+import { DporMenu } from "./MenuItem";
 
-export default function PersonList({ persons }) {
+export default function PersonList({ persons, fetchingNewContact }) {
   return (
     <>
-      <AddButton />
+      <AddButton persons={persons} fetchingNewContact={fetchingNewContact} />
       {persons ? (
         <TableContainer>
           <Table>
@@ -52,7 +51,11 @@ export default function PersonList({ persons }) {
                       scope="row"
                     >
                       {person.department}
-                      <MoreVertIcon />
+                      <DporMenu
+                        id={person.id}
+                        name={person.name}
+                        fetchingNewContact={fetchingNewContact}
+                      />
                     </TableCell>
                   </TableRow>
                 ))}
@@ -66,31 +69,50 @@ export default function PersonList({ persons }) {
   );
 }
 
-// import { AddButton } from "components/AddButton/AddButton";
-// import { TableHead } from "./PersonList.styled";
+// <Box sx={{ flexGrow: 0 }}>
+//   <Tooltip title="Open settings">
+//     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+//       {isLoggedIn ? (
+//         <Avatar
+//           alt="avatar"
+//           src="https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_1280.png"
+//         />
+//       ) : (
+//         <Avatar alt="avatar" src="" />
+//       )}
+//     </IconButton>
+//   </Tooltip>
+//   <Menu
+//     sx={{ mt: "45px" }}
+//     id="menu-appbar"
+//     anchorEl={anchorElUser}
+//     anchorOrigin={{
+//       vertical: "top",
+//       horizontal: "right",
+//     }}
+//     keepMounted
+//     transformOrigin={{
+//       vertical: "top",
+//       horizontal: "right",
+//     }}
+//     open={Boolean(anchorElUser)}
+//     onClose={handleCloseUserMenu}
+//   >
+// {
+//   settings.map((setting) => (
+//     <MenuItem
+//       key={setting}
+//       onClick={() => {
+//         if (!isLoggedIn) {
+//           return;
+//         }
 
-// export const PersonsList = () => {
-//   return (
-//     <>
-//       <AddButton />
-//       <TableHead>
-//         <thead>
-//           <tr>
-//             <th>Name</th>
-//             <th>Email</th>
-//             <th>Birth date</th>
-//             <th>Department</th>
-//           </tr>
-//         </thead>
-//         <tbody>
-//           <tr>
-//             <td>Lola Atkinson</td>
-//             <td>Ola.atkinson@mail.com</td>
-//             <td>1988-12-13</td>
-//             <td>A1</td>
-//           </tr>
-//         </tbody>
-//       </TableHead>
-//     </>
-//   );
-// };
+//         dispatch(operations.logOut());
+//       }}
+//     >
+//       <Typography textAlign="center">{setting}</Typography>
+//     </MenuItem>
+//   ));
+// }
+// //   </Menu>
+// // </Box>;

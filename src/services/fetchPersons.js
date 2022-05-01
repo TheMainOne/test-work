@@ -16,3 +16,8 @@ export async function addPerson(url = "", person) {
   const response = await axios.post(url, person);
   return response;
 }
+
+export async function deletePerson(url = "") {
+  const response = await axios.delete(url);
+  return response;
+}

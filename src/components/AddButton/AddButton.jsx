@@ -9,7 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { AddButtonWrapper } from "./AddButton.styled";
 import { ContactForm } from "components/AddNewPersonForm/AddNewPersonForm";
 
-export const AddButton = () => {
+export const AddButton = ({ persons, fetchingNewContact }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -46,6 +46,7 @@ export const AddButton = () => {
             width: 840,
             height: 510,
             bgcolor: "#e9e9e9",
+            outline: "none",
           }}
         >
           <Box
@@ -65,9 +66,17 @@ export const AddButton = () => {
             >
               Transactional modal title
             </Typography>
-            <CloseIcon fontSize="small" onClick={handleClose} />
+            <CloseIcon
+              fontSize="small"
+              sx={{ cursor: "pointer" }}
+              onClick={handleClose}
+            />
           </Box>
-          <ContactForm />
+          <ContactForm
+            handleClose={handleClose}
+            persons={persons}
+            fetchingNewContact={fetchingNewContact}
+          />
         </Box>
       </Modal>
     </>

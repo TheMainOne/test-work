@@ -4,7 +4,24 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: start;
-  ${"" /* margin-left: 220px; */}
 `;
 
-export const cancelButton = styled.button``;
+export const CancelButton = styled.button`
+  width: 420px;
+  height: 82px;
+  text-align: left;
+  border: none;
+  background-color: #2c2a2a;
+  color: white;
+  cursor: pointer;
+`;
+
+export const SubmitButton = styled.button`
+  width: 420px;
+  height: 82px;
+  text-align: left;
+  border: none;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+`;
