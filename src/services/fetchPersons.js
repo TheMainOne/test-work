@@ -12,6 +12,10 @@ export function fetchAllPersons() {
   return fetchPersons(`persons`);
 }
 
+export function fetchPersonById(id) {
+  return fetchPersons(`persons/${id}`);
+}
+
 export async function addPerson(url = "", person) {
   const response = await axios.post(url, person);
   return response;

@@ -30,7 +30,6 @@ export const ContactForm = ({ handleClose, persons, fetchingNewContact }) => {
       return;
     } else if (!validator.isEmail(email)) {
       toast.error(`${email} is incorrect email`);
-      form.reset();
       return;
     }
 
