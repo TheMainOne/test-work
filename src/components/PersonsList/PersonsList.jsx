@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -9,10 +10,19 @@ import { LoadingNotification } from "./PersonList.styled";
 import { DporMenu } from "./MenuItem";
 
 export default function PersonList({ persons, fetchingNewContact }) {
+  const [reversePersons, setReversePersons] = useState(null);
+
+  useEffect(() => {
+    try {
+      const reverseArray = persons.reverse();
+      setReversePersons(reverseArray);
+    } catch (error) {}
+  }, [persons]);
+
   return (
     <>
       <AddButton persons={persons} fetchingNewContact={fetchingNewContact} />
-      {persons ? (
+      {reversePersons ? (
         <TableContainer>
           <Table>
             <TableHead sx={{ backgroundColor: "#b1adad" }}>
@@ -26,8 +36,8 @@ export default function PersonList({ persons, fetchingNewContact }) {
             <TableBody
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              {persons &&
-                persons.map((person) => (
+              {reversePersons &&
+                reversePersons.map((person) => (
                   <TableRow
                     key={person.id}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -68,51 +78,3 @@ export default function PersonList({ persons, fetchingNewContact }) {
     </>
   );
 }
-
-// <Box sx={{ flexGrow: 0 }}>
-//   <Tooltip title="Open settings">
-//     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-//       {isLoggedIn ? (
-//         <Avatar
-//           alt="avatar"
-//           src="https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_1280.png"
-//         />
-//       ) : (
-//         <Avatar alt="avatar" src="" />
-//       )}
-//     </IconButton>
-//   </Tooltip>
-//   <Menu
-//     sx={{ mt: "45px" }}
-//     id="menu-appbar"
-//     anchorEl={anchorElUser}
-//     anchorOrigin={{
-//       vertical: "top",
-//       horizontal: "right",
-//     }}
-//     keepMounted
-//     transformOrigin={{
-//       vertical: "top",
-//       horizontal: "right",
-//     }}
-//     open={Boolean(anchorElUser)}
-//     onClose={handleCloseUserMenu}
-//   >
-// {
-//   settings.map((setting) => (
-//     <MenuItem
-//       key={setting}
-//       onClick={() => {
-//         if (!isLoggedIn) {
-//           return;
-//         }
-
-//         dispatch(operations.logOut());
-//       }}
-//     >
-//       <Typography textAlign="center">{setting}</Typography>
-//     </MenuItem>
-//   ));
-// }
-// //   </Menu>
-// // </Box>;
