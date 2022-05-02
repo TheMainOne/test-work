@@ -134,7 +134,7 @@ export const ViewPersonModal = ({
               Cancel
             </ExitButton>
             <SaveButton type="button" disabled>
-              Danger
+              Save
             </SaveButton>
           </Box>
         </Modal>
